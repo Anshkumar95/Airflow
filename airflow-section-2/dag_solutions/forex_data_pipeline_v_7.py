@@ -5,15 +5,16 @@ from airflow.operators.python import PythonOperator
 from airflow.operators.bash import BashOperator
 from airflow.providers.apache.hive.operators.hive import HiveOperator
 from airflow.providers.apache.spark.operators.spark_submit import SparkSubmitOperator
+from datetime import datetime, timedelta
+import csv
+import requests
+import json
 from packaging.version import parse
 
 if parse(sqlite3.sqlite_version) < parse(min_sqlite_version):
 
 
-from datetime import datetime, timedelta
-import csv
-import requests
-import json
+
 
 default_args = {
     "owner": "airflow",

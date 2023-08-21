@@ -4,23 +4,23 @@ from airflow.sensors.filesystem import FileSensor
 from airflow.operators.python_operator import PythonOperator
 from airflow.operators.bash_operator import BashOperator
 from datetime import datetime, timedelta
+import csv
+import requests
+import json
 from packaging.version import parse
 
 if parse(sqlite3.sqlite_version) < parse(min_sqlite_version):
 
-import csv
-import requests
-import json
+
 
 default_args = {
-            "owner": "airflow",
-            "start_date": datetime(2019, 1, 1),
-            "email_on_failure": False,
-            "email_on_retry": False,
-            "email": "youremail@host.com",
-            "retries": 1,
-            "retry_delay": timedelta(minutes=5)
-        }
+    "owner": "airflow",
+    "email_on_failure": False,
+    "email_on_retry": False,
+    "email": "admin@localhost.com",
+    "retries": 1,
+    "retry_delay": timedelta(minutes=5)
+}
 
 # Download forex rates according to the currencies we want to watch
 # described in the file forex_currencies.csv

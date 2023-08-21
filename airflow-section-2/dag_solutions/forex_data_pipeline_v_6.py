@@ -3,16 +3,16 @@ from airflow.sensors.http_sensor import HttpSensor
 from airflow.sensors.filesystem import FileSensor
 from airflow.operators.python_operator import PythonOperator
 from airflow.providers.apache.hive.operators.hive import HiveOperator
+from datetime import datetime, timedelta
+import csv
+import requests
+import json
 from packaging.version import parse
 
 if parse(sqlite3.sqlite_version) < parse(min_sqlite_version):
 
 
-from datetime import datetime, timedelta
 
-import csv
-import requests
-import json
 
 default_args = {
             "owner": "airflow",

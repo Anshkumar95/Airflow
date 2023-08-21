@@ -7,15 +7,14 @@ from airflow.providers.apache.hive.operators.hive import HiveOperator
 from airflow.providers.apache.spark.operators.spark_submit import SparkSubmitOperator
 from airflow.operators.email import EmailOperator
 from airflow.providers.slack.operators.slack_webhook import SlackWebhookOperator
-from packaging.version import parse
-
-if parse(sqlite3.sqlite_version) < parse(min_sqlite_version):
-
-
 from datetime import datetime, timedelta
 import csv
 import requests
 import json
+from packaging.version import parse
+
+if parse(sqlite3.sqlite_version) < parse(min_sqlite_version):
+
 
 default_args = {
     "owner": "airflow",
